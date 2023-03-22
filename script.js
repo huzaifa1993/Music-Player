@@ -1,7 +1,33 @@
+const image = document.querySelector('img');
+const title = document.getElementById('title');
+const artist = document.getElementById('artist');
 const music = document.querySelector ('audio');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+
+const songs = [
+    {
+        name: '1',
+        displayName: 'Al Fatiha',
+        artist :'Abu Baker Shatri',
+    },
+    {
+        name: '2',
+        displayName: 'Al Kader',
+        artist :'Mashari Alafasi',
+    },
+    {
+        name: '3',
+        displayName: 'Al Fajar ',
+        artist :'Islam Sobhi',
+    },
+    {
+        name: '4',
+        displayName: 'Al Maearej',
+        artist :'Abdurahman Osi',
+    }
+];
 
 let isPlaying = false;
 
@@ -20,3 +46,36 @@ function pauseSong() {
 }
 
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+
+function loadSong (song) {
+    title.textContent = song.displayName;
+    artist.textContent = song.artist;
+    music.src = `music/${song.name}.mp3`;
+    image.src = `img/${song.name}.jpg`;
+}
+
+let songIndex = 0;
+
+function prevSong () {
+    songIndex--;
+    if (songIndex < 0) {
+        songIndex = songs.length -1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+function nextSong () {
+    songIndex++;
+    if (songIndex > songs.length -1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+loadSong(songs[songIndex]);
+
+
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
