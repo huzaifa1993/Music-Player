@@ -89,6 +89,11 @@ h3 {
 
 }
 
+.fas:hover {
+  cursor: pointer;
+  filter: brightness(80%);
+}
+
 .main-button {
   font-size: 40px;
   position: relative;
