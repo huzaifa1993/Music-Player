@@ -1,37 +1,7 @@
-const image = document.querySelector('img');
-const title = document.getElementById('title');
-const artist = document.getElementById('artist');
-const music = document.querySelector ('audio');
-const progressContainer =document.getElementById('progress-contasiner');
-const progress = document.getElementById('progress');  
-const currentTimeEl = document.getElementById('current-time');
-const durationEl = document.getElementById('duration');
-const prevBtn = document.getElementById('prev');
-const playBtn = document.getElementById('play');
-const nextBtn = document.getElementById('next');
+import {songs, image,title,artist,music,progressContainer,progress,currentTimeEl,durationEl,prevBtn,playBtn,nextBtn,setProgressBar} from "/info.js";
 
-const songs = [
-    {
-        name: '1',
-        displayName: 'Al Fatiha',
-        artist :'Abu Baker Shatri',
-    },
-    {
-        name: '2',
-        displayName: 'Al Kader',
-        artist :'Mashari Alafasi',
-    },
-    {
-        name: '3',
-        displayName: 'Al Fajar ',
-        artist :'Islam Sobhi',
-    },
-    {
-        name: '4',
-        displayName: 'Al Maearej',
-        artist :'Abdurahman Osi',
-    }
-];
+
+
 
 let isPlaying = false;
 
@@ -41,6 +11,7 @@ function playSong() {
     playBtn.setAttribute('title', 'pause');
     music.play();
 }
+
 
 function pauseSong() {
     isPlaying = false;
@@ -101,13 +72,7 @@ function updateProgressBar(e) {
     }
 }
 
-function setProgressBar(e) {
-    console.log(e);
-    const width = this.clientWidth;
-    const clickX = e.offsetX;
-    const {duration} = music;
-    music.currentTime = (clickX / width) * duration;
-}
+
 
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
